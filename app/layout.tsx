@@ -5,29 +5,31 @@ import Sidebar from '@/components/Sidebar';
 import SupabaseProvider from '@/providers/SupabaseProvider';
 import UserProvider from '@/providers/UserProvider';
 import Modalprovider from '@/providers/ModalProvider';
+import ToasterProvider from '@/providers/ToasterProvider';
 
 const font = Figtree({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Spotify Clone',
-  description: 'Listen to music!',
+	title: 'Spotify Clone',
+	description: 'Listen to music!',
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode;
+	children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <body className={font.className}>
-        <SupabaseProvider>
-          <UserProvider>
-            <Modalprovider />
-            <Sidebar>{children}</Sidebar>
-          </UserProvider>
-        </SupabaseProvider>
-      </body>
-    </html>
-  );
+	return (
+		<html lang='en'>
+			<body className={font.className}>
+				<ToasterProvider />
+				<SupabaseProvider>
+					<UserProvider>
+						<Modalprovider />
+						<Sidebar>{children}</Sidebar>
+					</UserProvider>
+				</SupabaseProvider>
+			</body>
+		</html>
+	);
 }
